@@ -1,0 +1,172 @@
+/**
+ * Design tokens.
+ *
+ * One warm, paper-inspired system for both themes. Components never hard-code
+ * colors — they use these custom properties, so light/dark stay consistent.
+ */
+
+:root {
+  /* Typography */
+  --font-ui: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+  --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua',
+    Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  /* Layout */
+  --sidebar-width: 264px;
+  /* Wide enough that the card grid forms two columns on large screens. */
+  --list-width: clamp(292px, 30vw, 520px);
+  --breakpoint-compact: 768px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+  --duration: 180ms;
+
+  /* --- Light theme (default) --- */
+  color-scheme: light;
+
+  --paper: #f7f2e8;
+  --paper-deep: #efe7d7;
+  --surface: #fffdf8;
+  --surface-sunken: #f3ece0;
+  --surface-hover: #faf5eb;
+  --surface-active: #f4ebdc;
+
+  --border: #e6dbc6;
+  --border-strong: #d6c8ae;
+  --border-soft: #efe7d9;
+
+  --ink: #2f2b25;
+  --ink-soft: #564f45;
+  --ink-muted: #857c6e;
+  --ink-faint: #a89e8e;
+
+  --accent: #b8562f;
+  --accent-hover: #a0471f;
+  --accent-soft: #f7e3d8;
+  --accent-ink: #fffaf6;
+
+  --danger: #a3322a;
+  --danger-hover: #8b2822;
+  --danger-ink: #fff6f4;
+
+  --focus-ring: #1f6f96;
+
+  --shadow-sm: 0 1px 2px rgba(74, 58, 35, 0.07);
+  --shadow-md: 0 2px 6px rgba(74, 58, 35, 0.09), 0 1px 2px rgba(74, 58, 35, 0.05);
+  --shadow-lg: 0 12px 32px rgba(48, 36, 20, 0.18);
+
+  --scrim: rgba(38, 30, 20, 0.42);
+
+  /* Notebook palette — restrained warm set */
+  --note-amber: #f0d493;
+  --note-amber-ink: #6a4c12;
+  --note-rose: #efc4c4;
+  --note-rose-ink: #7a3138;
+  --note-sage: #c9dcbb;
+  --note-sage-ink: #3c5530;
+  --note-sky: #c0d7e7;
+  --note-sky-ink: #28495f;
+  --note-lilac: #d7cae7;
+  --note-lilac-ink: #453a63;
+  --note-sand: #e9dabf;
+  --note-sand-ink: #5c492b;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --paper: #1a1714;
+  --paper-deep: #141210;
+  --surface: #221e19;
+  --surface-sunken: #1c1915;
+  --surface-hover: #2b261f;
+  --surface-active: #322c24;
+
+  --border: #382f26;
+  --border-strong: #4a4034;
+  --border-soft: #2c261f;
+
+  --ink: #ece5d8;
+  --ink-soft: #c5bbaa;
+  --ink-muted: #9c9284;
+  --ink-faint: #776e60;
+
+  --accent: #e08a5f;
+  --accent-hover: #efa079;
+  --accent-soft: #3b2a21;
+  --accent-ink: #26190f;
+
+  --danger: #d8756a;
+  --danger-hover: #e58c81;
+  --danger-ink: #2a1512;
+
+  --focus-ring: #7fb9d8;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+
+  --scrim: rgba(0, 0, 0, 0.6);
+
+  --note-amber: #6d5626;
+  --note-amber-ink: #f6e3b6;
+  --note-rose: #6d3439;
+  --note-rose-ink: #f7cdcd;
+  --note-sage: #3d5530;
+  --note-sage-ink: #d5e8c8;
+  --note-sky: #2c4d63;
+  --note-sky-ink: #c8e0f0;
+  --note-lilac: #453a63;
+  --note-lilac-ink: #ddd2ee;
+  --note-sand: #5c492b;
+  --note-sand-ink: #f0e2c8;
+}
+
+/* Palette lookup: components set data-color="<key>" and read these. */
+[data-color='amber'] {
+  --note-surface: var(--note-amber);
+  --note-ink: var(--note-amber-ink);
+}
+[data-color='rose'] {
+  --note-surface: var(--note-rose);
+  --note-ink: var(--note-rose-ink);
+}
+[data-color='sage'] {
+  --note-surface: var(--note-sage);
+  --note-ink: var(--note-sage-ink);
+}
+[data-color='sky'] {
+  --note-surface: var(--note-sky);
+  --note-ink: var(--note-sky-ink);
+}
+[data-color='lilac'] {
+  --note-surface: var(--note-lilac);
+  --note-ink: var(--note-lilac-ink);
+}
+[data-color='sand'] {
+  --note-surface: var(--note-sand);
+  --note-ink: var(--note-sand-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration: 1ms;
+  }
+}
